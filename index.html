@@ -299,6 +299,22 @@
   .price li svg{flex:none;margin-top:2px}
   .price .btn{margin-top:auto}
 
+  /* Premium key entry */
+  .key-form{margin-top:20px;border-top:1px solid var(--line);padding-top:18px}
+  .key-form label{display:block;font-weight:600;font-size:14px;margin-bottom:8px}
+  .key-row{display:flex;gap:8px;flex-wrap:wrap}
+  .key-row input{
+    flex:1 1 170px;font:inherit;font-size:15px;color:var(--ink);background:var(--bg);
+    border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;min-height:46px;
+    text-transform:uppercase;letter-spacing:.03em;
+  }
+  .key-row input:focus{border-color:var(--focus);outline:3px solid color-mix(in srgb,var(--focus) 30%, transparent);outline-offset:0}
+  .key-msg{font-size:14px;margin-top:8px}
+  .key-msg:empty{margin-top:0}
+  .key-msg.err{color:#b3261e}
+  .key-done{margin-top:20px;background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:14.5px}
+  @media (prefers-color-scheme: dark){ .key-msg.err{color:#ff9d8a} }
+
   /* FAQ */
   .faq{max-width:760px}
   details{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:10px}
@@ -411,7 +427,7 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 id="tpl-h">45 designer templates, ready to edit</h2>
-        <p>Every template below is live. Filter by the job, search by name, then tap “Use this template” — it opens in the builder with sample wording ready to replace with your own.</p>
+        <p>Filter by the job or search by name, then tap “Use this template” to open a design in the builder. Five templates are free forever — the PRO designs unlock with a Premium key.</p>
       </div>
       <div class="tpl-tools">
         <div class="chips" id="tplChips" role="group" aria-label="Filter templates by category"></div>
@@ -430,7 +446,7 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 id="builder-h">The builder</h2>
-        <p>Choose from all 45 templates, type your words, and watch the poster update live. When it looks right, download a full-resolution PNG.</p>
+        <p>Pick a template, type your words, and watch the poster update live. The five free templates are ready right away — PRO templates unlock with a Premium key.</p>
       </div>
       <div class="builder">
         <form class="panel" id="editForm" aria-label="Poster editor">
@@ -438,6 +454,7 @@
           <span class="hint" id="pickCatLabel" style="display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:6px">Category</span>
           <select class="pick-cat" id="pickCat" aria-labelledby="pickCatLabel"></select>
           <div class="tpl-picker" id="tplPicker" role="group" aria-label="Choose a template"></div>
+          <p class="hint" style="margin-top:10px;font-size:13px;color:var(--ink-3)">Templates marked PRO unlock with a Premium key — <a href="#pricing">enter your key in Pricing</a>.</p>
 
           <h3 style="margin-top:24px">2 · Your words</h3>
           <div class="field">
@@ -558,7 +575,7 @@
   <section id="pricing" aria-labelledby="price-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="price-h">Free to start. $9 to unlock everything.</h2>
+        <h2 id="price-h">Five templates free. The other 40 are Premium — $9, once.</h2>
         <p>One payment — no subscription, no per-export fees, no watermark games.</p>
       </div>
       <div class="price-grid">
@@ -567,10 +584,10 @@
           <h3>Starter</h3>
           <div class="amt">$0</div>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Every one of the 45 templates in the web builder above</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> 5 templates in the builder, free forever — no account, no key</li>
             <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Square, portrait &amp; story sizes</li>
             <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Full-resolution PNG export, no watermark</li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited posters</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited posters with the free templates</li>
           </ul>
           <a class="btn ghost" href="#builder">Start free</a>
         </div>
@@ -579,13 +596,22 @@
           <h3>Everything unlocked</h3>
           <div class="amt">$9 <small>one-time</small></div>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> All 45 templates in the Android app — plus every new design as it lands</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> All 45 templates — on this page and in the Android app, unlocked with one key</li>
             <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> The full accent-colour palette on every design</li>
             <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Design on your phone, fully offline</li>
             <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6 12 13.5 4" stroke="#2e7d4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Free lifetime updates</li>
           </ul>
-          <a class="btn" href="#builder">Try the PRO templates free</a>
-          <p style="margin-top:12px;font-size:13.5px;color:var(--ink-3)">Premium checkout opens on Gumroad when the Android app launches — until then, every template on this page is free to design with.</p>
+          <a class="btn" style="margin-top:0;align-self:stretch" href="https://sami4196.gumroad.com/l/poster-maker-premium" target="_blank" rel="noopener">Buy Premium on Gumroad — $9</a>
+          <form class="key-form" id="keyForm">
+            <label for="keyInput">Already bought Premium? Enter your key</label>
+            <div class="key-row">
+              <input id="keyInput" type="text" placeholder="PM-XXXX-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="keyMsg" />
+              <button class="btn" type="submit">Unlock</button>
+            </div>
+            <p class="key-msg" id="keyMsg" role="status" aria-live="polite"></p>
+          </form>
+          <p class="key-done" id="keyDone" hidden><strong>Premium is active.</strong> All 45 templates are unlocked in the builder — pick any design and start.</p>
+          <p id="keyNote" style="margin-top:12px;font-size:13.5px;color:var(--ink-3)">Tap the button above to buy on Gumroad — $9 one-time. Your key arrives with the receipt; enter it in the field above and everything unlocks here and in the Android app.</p>
         </div>
       </div>
     </div>
@@ -597,8 +623,8 @@
       <div class="sec-head"><h2 id="faq-h">Questions</h2></div>
       <div class="faq">
         <details>
-          <summary>Can I really use the PRO templates before paying?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 7 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <div class="a">Yes — on this page all 45 templates, PRO designs included, are unlocked so you can design and download real posters before deciding. Premium ($9, one-time) puts the whole library in the Android app when it launches, plus every future template.</div>
+          <summary>How do I unlock the PRO templates?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 7 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="a">Buy Poster Maker Premium on Gumroad ($9, one-time). Your receipt includes a key that looks like PM-XXXX-XXXX-XXXX — paste it into the key field in the Pricing section above and all 45 templates unlock, here and in the Android app. The five free templates need no key at all.</div>
         </details>
         <details>
           <summary>What size is the downloaded poster?<svg class="chev" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 7 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
@@ -690,7 +716,7 @@
       subtext:"Fresh pieces, small batches. See them before everyone else does.",
       date:"In store & online now", cta:"See the drop",
       bg:"#f6efe6", tx:"#221d16", tx2:"#6f6455", accent:"#c9a227", bdgtx:"#241a02" },
-    { id:"flash", name:"Flash Sale", cat:"Retail", tier:"free", cls:"f-caps", hs:13,
+    { id:"flash", name:"Flash Sale", cat:"Retail", tier:"pro", cls:"f-caps", hs:13,
       desc:"A ticking-clock offer — 24-hour sales, codes and countdown deals.",
       badge:"24 hours only", headline:"Flash\nSale",
       subtext:"Extra 30% off everything with code FLASH30. The clock is ticking.",
@@ -714,7 +740,7 @@
       subtext:"Phones, laptops, audio and more. Trade-in welcome, warranty included.",
       date:"TechZone · Mall Level 2", cta:"See deals",
       bg:"#0b1526", tx:"#eaf4ff", tx2:"#9db8d6", accent:"#39a7ff", bdgtx:"#04182e" },
-    { id:"school", name:"Back to School", cat:"Retail", tier:"free", cls:"", hs:11.5,
+    { id:"school", name:"Back to School", cat:"Retail", tier:"pro", cls:"", hs:11.5,
       desc:"Bright and organised — school supplies, uniforms and term offers.",
       badge:"New term", headline:"Back to\nSchool",
       subtext:"Bags, bottles, stationery and shoes — the full checklist in one stop.",
@@ -734,13 +760,13 @@
       subtext:"DJ Nova with a four-hour set. Two rooms, one dancefloor, no early finish.",
       date:"Sat · 10pm · Club Mirage", cta:"Book a table",
       bg:"#160a2e", tx:"#f6efff", tx2:"#bda8ec", accent:"#7c5cff", bdgtx:"#ffffff" },
-    { id:"comedy", name:"Comedy Night", cat:"Events", tier:"free", cls:"", hs:12,
+    { id:"comedy", name:"Comedy Night", cat:"Events", tier:"pro", cls:"", hs:12,
       desc:"Sunny yellow confidence for stand-up, improv and open mics.",
       badge:"Live stand-up", headline:"Comedy\nNight",
       subtext:"Five comics, one microphone, zero mercy. Hosted by Zara Khan.",
       date:"Thu · 8pm · The Cellar", cta:"Get seats",
       bg:"#ffc61a", tx:"#241a00", tx2:"#6b5510", accent:"#e8401f", bdgtx:"#ffffff" },
-    { id:"movie", name:"Movie Night", cat:"Events", tier:"free", cls:"wash-glow", hs:11.5,
+    { id:"movie", name:"Movie Night", cat:"Events", tier:"pro", cls:"wash-glow", hs:11.5,
       desc:"Cinematic dark for film nights, screenings and outdoor cinema.",
       badge:"Outdoor cinema", headline:"Movie\nUnder Stars",
       subtext:"A classic on the big screen. Blankets, popcorn and hot drinks on us.",
@@ -776,13 +802,13 @@
       subtext:"Dinner, auction and live music in aid of children's literacy programmes.",
       date:"Fri · 7pm · Grand Meridian", cta:"Book a table",
       bg:"#101418", tx:"#f3ead8", tx2:"#b3a88f", accent:"#c9a227", bdgtx:"#241a02" },
-    { id:"art", name:"Art Exhibition", cat:"Events", tier:"free", cls:"lay-min", hs:10.5,
+    { id:"art", name:"Art Exhibition", cat:"Events", tier:"pro", cls:"lay-min", hs:10.5,
       desc:"Gallery-white minimalism for exhibitions and studio shows.",
       badge:"New exhibition", headline:"Colour\nFields",
       subtext:"New paintings by Leila Rahman — large works in oil and pigment.",
       date:"Oct 3–28 · North Gallery", cta:"Plan a visit",
       bg:"#ffffff", tx:"#161616", tx2:"#666666", accent:"#e8401f", bdgtx:"#ffffff" },
-    { id:"church", name:"Sunday Service", cat:"Events", tier:"free", cls:"lay-center f-serif", hs:10.5,
+    { id:"church", name:"Sunday Service", cat:"Events", tier:"pro", cls:"lay-center f-serif", hs:10.5,
       desc:"Warm centred serif for services, gatherings and community notices.",
       badge:"All are welcome", headline:"Sunday\nService",
       subtext:"Worship, teaching and coffee afterwards. Children's church runs alongside.",
@@ -809,7 +835,7 @@
       subtext:"Any two large pizzas for $18. Sourdough base, San Marzano tomatoes.",
       date:"Fri–Sun · 5–11pm", cta:"Order ahead",
       bg:"#8f1d04", tx:"#fff6e8", tx2:"#f3c39a", accent:"#ffb400", bdgtx:"#2a1503" },
-    { id:"bakery", name:"Fresh Bakery", cat:"Food & Drink", tier:"free", cls:"lay-center", hs:11,
+    { id:"bakery", name:"Fresh Bakery", cat:"Food & Drink", tier:"pro", cls:"lay-center", hs:11,
       desc:"Soft centred warmth for bakeries, patisseries and bake sales.",
       badge:"Baked at dawn", headline:"Fresh From\nThe Oven",
       subtext:"Sourdough, cardamom buns and the Saturday-only almond croissant.",
@@ -827,13 +853,13 @@
       subtext:"A seasonal tasting menu by Chef Andre. Wine pairing available. Booking essential.",
       date:"Noir · Reservations only", cta:"Reserve a table",
       bg:"#14201a", tx:"#f1ead9", tx2:"#a9b3a0", accent:"#c9a227", bdgtx:"#241a02" },
-    { id:"brunch", name:"Weekend Brunch", cat:"Food & Drink", tier:"free", cls:"", hs:11.5,
+    { id:"brunch", name:"Weekend Brunch", cat:"Food & Drink", tier:"pro", cls:"", hs:11.5,
       desc:"Fresh garden greens for brunch, cafés and slow weekends.",
       badge:"Sat & Sun", headline:"Weekend\nBrunch",
       subtext:"Shakshuka, pancakes, proper coffee. Served slow, until 2pm.",
       date:"The Garden Table · 10am–2pm", cta:"Book a table",
       bg:"#eef6e6", tx:"#24351c", tx2:"#5f7355", accent:"#2e7d4f", bdgtx:"#ffffff" },
-    { id:"market", name:"Farmers Market", cat:"Food & Drink", tier:"free", cls:"", hs:11,
+    { id:"market", name:"Farmers Market", cat:"Food & Drink", tier:"pro", cls:"", hs:11,
       desc:"Honest, earthy style for markets, farm shops and local produce.",
       badge:"Every Saturday", headline:"Farmers\nMarket",
       subtext:"40 local stalls: bread, honey, flowers, cheese and street food.",
@@ -854,7 +880,7 @@
       subtext:"Another family home matched with its new owners — over asking, in nine days.",
       date:"Homesmith Estates", cta:"Value my home",
       bg:"#14532d", tx:"#f2fff5", tx2:"#a8d5b5", accent:"#d8ff3d", bdgtx:"#131503" },
-    { id:"rent", name:"For Rent", cat:"Property", tier:"free", cls:"", hs:12,
+    { id:"rent", name:"For Rent", cat:"Property", tier:"pro", cls:"", hs:12,
       desc:"Clear, factual rental listings that read well at a glance.",
       badge:"Available now", headline:"2-Bed Flat\nTo Let",
       subtext:"Bright, furnished, five minutes from the station. Bills-included option.",
@@ -906,13 +932,13 @@
       subtext:"Massage, facial and thermal suite access. Robes, towels and lunch included.",
       date:"Stillwater Spa · From $89", cta:"Reserve",
       bg:"#e7efec", tx:"#22332e", tx2:"#5f7a72", accent:"#31e6c8", bdgtx:"#06231d" },
-    { id:"carwash", name:"Car Wash", cat:"Services", tier:"free", cls:"f-caps", hs:12.5,
+    { id:"carwash", name:"Car Wash", cat:"Services", tier:"pro", cls:"f-caps", hs:12.5,
       desc:"Deep-water blue and loud type for valeting and car care.",
       badge:"While you wait", headline:"Wash &\nWax $12",
       subtext:"Outside wash, wax, wheels and windows — done in twenty minutes.",
       date:"Shine Auto · Open daily", cta:"Drive in",
       bg:"#0b3d66", tx:"#eaf7ff", tx2:"#a5cbe8", accent:"#39a7ff", bdgtx:"#04182e" },
-    { id:"hiring", name:"Now Hiring", cat:"Services", tier:"free", cls:"", hs:12,
+    { id:"hiring", name:"Now Hiring", cat:"Services", tier:"pro", cls:"", hs:12,
       desc:"Friendly, legible hiring posters for shops, cafés and teams.",
       badge:"Join the team", headline:"We're\nHiring",
       subtext:"Baristas and bakers wanted. Good pay, daytime hours, meals on shift.",
@@ -924,7 +950,7 @@
       subtext:"Family, graduation and brand portraits. Same-week digital delivery.",
       date:"Lens & Light Studio", cta:"Book a shoot",
       bg:"#141414", tx:"#f5f2ec", tx2:"#a49a8b", accent:"#c9a227", bdgtx:"#241a02" },
-    { id:"tutoring", name:"Tutoring", cat:"Services", tier:"free", cls:"", hs:11.5,
+    { id:"tutoring", name:"Tutoring", cat:"Services", tier:"pro", cls:"", hs:11.5,
       desc:"Trustworthy blue for tutors, courses and exam prep.",
       badge:"Ages 8–18", headline:"Maths &\nScience Tuition",
       subtext:"Small groups, weekly feedback, exam technique. First lesson free.",
@@ -936,7 +962,7 @@
       subtext:"Screens, batteries and charging ports — most fixed within the hour.",
       date:"FixPoint · Walk-ins welcome", cta:"Get a quote",
       bg:"#1c1c22", tx:"#f2f2f5", tx2:"#a9a9b5", accent:"#ffb400", bdgtx:"#2a1503" },
-    { id:"music", name:"Music Lessons", cat:"Services", tier:"free", cls:"lay-center f-serif", hs:11,
+    { id:"music", name:"Music Lessons", cat:"Services", tier:"pro", cls:"lay-center f-serif", hs:11,
       desc:"Centred serif warmth for music teachers and schools.",
       badge:"All ages", headline:"Learn\nPiano",
       subtext:"Friendly one-to-one lessons for beginners. First trial lesson free.",
@@ -961,7 +987,7 @@
     story:   { w:1080, h:1920, ratio:"9/16",  max:320, label:"1080 × 1920 px — made for stories and WhatsApp status." }
   };
 
-  var state = { tpl:0, size:"square", accent:ACCENTS[0].hex, fields:{} };
+  var state = { tpl:0, size:"square", accent:ACCENTS[0].hex, fields:{}, unlocked:false };
 
   /* ---------------- Elements ---------------- */
   var $ = function(id){ return document.getElementById(id); };
@@ -981,9 +1007,64 @@
   function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function lines(s){ return s.split("\n").map(esc).join("<br />"); }
 
+  /* ---------------- Premium gate ----------------
+     Keys look like PM-XXXX-XXXX-XXXX. The last two characters are an
+     FNV-1a checksum of the first ten, over a 31-character alphabet —
+     the same offline scheme as the other PixelForge apps. Unlocking
+     is in-memory for this page session only. */
+  var KEY_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+  function fnv1a(str){
+    var h = 0x811c9dc5;
+    for(var i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+    return h >>> 0;
+  }
+  function validKey(raw){
+    var k = String(raw || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+    if(k.length !== 14 || k.slice(0, 2) !== "PM") return false;
+    var body = k.slice(2), i;
+    for(i = 0; i < body.length; i++){ if(KEY_ALPHABET.indexOf(body[i]) < 0) return false; }
+    var v = fnv1a("PM:" + body.slice(0, 10)) % 961;
+    return KEY_ALPHABET[Math.floor(v / 31)] + KEY_ALPHABET[v % 31] === body.slice(10);
+  }
+  function isLocked(t){ return t.tier === "pro" && !state.unlocked; }
+  var pendingTpl = -1;
+  function gatePrompt(t, i){
+    pendingTpl = i;
+    showPill(t.name + " is a Premium template — enter your key to unlock it");
+    document.getElementById("pricing").scrollIntoView({ behavior:"smooth", block:"start" });
+    setTimeout(function(){ var ki = $("keyInput"); if(ki) ki.focus({ preventScroll:true }); }, 650);
+  }
+  function unlockAll(){
+    state.unlocked = true;
+    cardBtns.forEach(function(b){ b.textContent = "Use this template"; });
+    $("keyForm").hidden = true;
+    $("keyDone").hidden = false;
+    $("keyNote").hidden = true;
+    showPill("Premium unlocked — all 45 templates are open");
+    if(pendingTpl >= 0){
+      var i = pendingTpl; pendingTpl = -1;
+      selectTemplate(i, true);
+      document.getElementById("builder").scrollIntoView({ behavior:"smooth", block:"start" });
+    }
+  }
+  $("keyForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var keyMsg = $("keyMsg");
+    if(validKey($("keyInput").value)){
+      keyMsg.textContent = "";
+      keyMsg.className = "key-msg";
+      unlockAll();
+    } else {
+      keyMsg.textContent = "That key doesn't look right — check the PM-XXXX-XXXX-XXXX key from your Gumroad receipt and try again.";
+      keyMsg.className = "key-msg err";
+      $("keyInput").focus();
+    }
+  });
+
   /* ---------------- Gallery ---------------- */
   var grid = $("tplGrid");
   var cardEls = [];
+  var cardBtns = [];
   function posterVars(t){
     return "--pbg:" + t.bg + ";--ptx:" + t.tx + ";--ptx2:" + t.tx2 +
            ";--pbd:" + t.bdgtx + ";--pac:" + t.accent + ";--phs:" + t.hs + "cqw";
@@ -1002,14 +1083,17 @@
       '</div></div>' +
       '<div class="tpl-meta"><h3>' + esc(t.name) + '</h3>' + (t.tier === "pro" ? '<span class="pro">PRO</span>' : '') + '<span class="cat">' + esc(t.cat) + '</span></div>' +
       '<p>' + esc(t.desc) + '</p>' +
-      '<button class="btn ghost small" type="button">Use this template</button>';
-    card.querySelector("button").addEventListener("click", function(){
+      '<button class="btn ghost small" type="button">' + (t.tier === "pro" ? "Unlock — PRO" : "Use this template") + '</button>';
+    var cardBtn = card.querySelector("button");
+    cardBtn.addEventListener("click", function(){
+      if(isLocked(t)){ gatePrompt(t, i); return; }
       selectTemplate(i, true);
       document.getElementById("builder").scrollIntoView({ behavior:"smooth", block:"start" });
       showPill(t.name + " loaded in the builder");
     });
     grid.appendChild(card);
     cardEls.push(card);
+    cardBtns.push(cardBtn);
   });
 
   /* Gallery filters: category chips + search */
@@ -1119,8 +1203,9 @@
 
   /* ---------------- Template & size ---------------- */
   function selectTemplate(i, keepSize){
-    state.tpl = i;
     var t = TEMPLATES[i];
+    if(isLocked(t)){ gatePrompt(t, i); return; }
+    state.tpl = i;
     stage.className = "poster " + t.cls;
     stage.style.setProperty("--pbg", t.bg);
     stage.style.setProperty("--ptx", t.tx);
@@ -1298,6 +1383,7 @@
   var dlg = $("exportDlg"), dlgImg = $("dlgImg"), dlgDl = $("dlgDownload"), dlgMeta = $("dlgMeta");
   var lastFocus = null;
   function openExport(){
+    if(isLocked(TEMPLATES[state.tpl])){ gatePrompt(TEMPLATES[state.tpl], state.tpl); return; }
     readFields();
     var cv = drawPoster();
     var url = cv.toDataURL("image/png");
@@ -1319,7 +1405,9 @@
   dlgDl.addEventListener("click", function(){ showPill("Downloading your poster PNG"); });
 
   /* ---------------- Init ---------------- */
-  selectTemplate(0, true);
+  var firstFree = -1;
+  TEMPLATES.forEach(function(t, i){ if(firstFree < 0 && t.tier === "free") firstFree = i; });
+  selectTemplate(firstFree < 0 ? 0 : firstFree, true);
   render();
 })();
 </script>
