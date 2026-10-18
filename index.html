@@ -1009,9 +1009,11 @@
 
   /* ---------------- Premium gate ----------------
      Keys look like PM-XXXX-XXXX-XXXX. The last two characters are an
-     FNV-1a checksum of the first ten, over a 31-character alphabet —
-     the same offline scheme as the other PixelForge apps. Unlocking
-     is in-memory for this page session only. */
+     FNV-1a checksum of the first ten, over a 31-character alphabet,
+     keyed by the validation secret below — the same offline scheme as
+     the other PixelForge apps. Unlocking is in-memory for this page
+     session only. */
+  var KEY_SECRET = "PM-PREMIUM-A68B8P";
   var KEY_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
   function fnv1a(str){
     var h = 0x811c9dc5;
@@ -1023,7 +1025,7 @@
     if(k.length !== 14 || k.slice(0, 2) !== "PM") return false;
     var body = k.slice(2), i;
     for(i = 0; i < body.length; i++){ if(KEY_ALPHABET.indexOf(body[i]) < 0) return false; }
-    var v = fnv1a("PM:" + body.slice(0, 10)) % 961;
+    var v = fnv1a(KEY_SECRET + ":" + body.slice(0, 10)) % 961;
     return KEY_ALPHABET[Math.floor(v / 31)] + KEY_ALPHABET[v % 31] === body.slice(10);
   }
   function isLocked(t){ return t.tier === "pro" && !state.unlocked; }
@@ -1411,5 +1413,7 @@
   render();
 })();
 </script>
+<script data-goatcounter="https://postermaker.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
